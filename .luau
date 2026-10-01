@@ -1,4 +1,3 @@
-local Record_Time = tick()
 repeat
 	task.wait()
 until game:GetService("Players")
@@ -7,10 +6,16 @@ local Game_Name = game:GetService("MarketplaceService"):GetProductInfo(game.Plac
 
 warn("[Project Assetly] Loading Script : " .. Game_Name .. " 🟢")
 
-if game.PlaceId == 16732694052 then -- // Fisch
-	loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/587b3749ba252e8da0403e358c5887d7.lua"))()
-elseif game.PlaceId == 127794225497302 then -- // Abyss
-	loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/fa5f3bbe612b0ef6475f7f104e2a3418.lua"))()
+if game.PlaceId == 16732694052 then
+	if getgenv().Settings then
+		loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/9742d9725c9e2d95c16c36e792abf53f.lua"))()
+	else
+		game.Players.LocalPlayer:Kick("MAN NOT AVAILABLE.")
+	end
+else
+	if getgenv().Settings then
+		loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/0b505225114b31f80a35a0f0fbb64b4b.lua"))()
+	else
+		game.Players.LocalPlayer:Kick("MAN NOT AVAILABLE.")
+	end
 end
-
-print("[Project Assetly] Loading Success , Time : " .. tick() - Record_Time)
